@@ -1,6 +1,6 @@
 import { FaBook } from "react-icons/fa";
 import { FaBookOpen } from "react-icons/fa";
-import ProgressBar from "../components/Progressbar/Progressbar";
+import ProgressBar from "../components/ProgressBar/ProgressBar";
 const MySkills = () => {
     return (
         <section className="space-y-6">
