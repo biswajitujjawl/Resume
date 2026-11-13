@@ -3,7 +3,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 const PortfolioHeader = () => {
     const [showPortfolioMenu, setShowPortfolioMenu] = useState(false);
-    const [activeMenu, setActiveMenu] = useState("PortfolioHeaderAll");
+    const [activeMenu, setActiveMenu] = useState("");
 
     const handleCategory=(category)=>{
         setActiveMenu(category);
@@ -13,7 +13,11 @@ const PortfolioHeader = () => {
         <div className="relative">
             <button onClick={() => setShowPortfolioMenu(!showPortfolioMenu)} className="md:hidden text-white h-10 w-full bg-[#292929] border border-yellow-300/10
             rounded-[15px] flex items-center justify-between px-5">
-                <span>Select Category</span>
+                <span>
+                    {
+                    activeMenu===""? "Select Category" : activeMenu==="PortfolioHeaderAll"? "All" : activeMenu==="PortfolioHeaderApplications" ? "Applications" : "Web Development"
+                    }
+                    </span>
                 {showPortfolioMenu ? <FaAngleUp /> : <FaAngleDown />}
             </button>
 
@@ -22,14 +26,15 @@ const PortfolioHeader = () => {
                 <ul className="flex flex-col gap-3 md:flex md:flex-row md:gap-5 bg-[#292929] border border-yellow-300/10 
                 md:bg-transparent md:border-0 rounded-[15px] pl-5 py-3 md:pl-0 md:pt-0 h-auto">
                     <li>
-                        <NavLink to="portfolio_all" onClick={() => setActiveMenu("PortfolioHeaderAll")} className={({ isActive }) => isActive ? "text-purple-500" : "text-white"} >All</NavLink>
+                        {/* <NavLink to="portfolio_all" onClick={() => setActiveMenu("PortfolioHeaderAll")} className={({ isActive }) => isActive ? "text-purple-500" : "text-white"} >All</NavLink> */}
+                        <NavLink to="portfolio_all" onClick={() => handleCategory("PortfolioHeaderAll")} className={({ isActive }) => isActive ? "text-purple-500" : "text-white"} >All</NavLink>
                     </li>
                     <li>
-                        <NavLink to="portfolio_applications" onClick={() => setActiveMenu("PortfolioHeaderApplications")} className={({ isActive }) => isActive ? "text-purple-500" : "text-white"} >Applications</NavLink>
+                        <NavLink to="portfolio_applications" onClick={() => handleCategory("PortfolioHeaderApplications")} className={({ isActive }) => isActive ? "text-purple-500" : "text-white"} >Applications</NavLink>
 
                     </li>
                     <li>
-                        <NavLink to="web_development" onClick={() => setActiveMenu("PortfolioHeaderWebDevelopment")} className={({ isActive }) => isActive ? "text-purple-500" : "text-white"} >Web Development</NavLink>
+                        <NavLink to="web_development" onClick={() => handleCategory("PortfolioHeaderWebDevelopment")} className={({ isActive }) => isActive ? "text-purple-500" : "text-white"} >Web Development</NavLink>
                     </li>
                 </ul>
                 {/* </div> */}
