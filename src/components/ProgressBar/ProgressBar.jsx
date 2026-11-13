@@ -1,5 +1,12 @@
 import { useState, useEffect } from "react";
-const skills = [
+
+const ProgressBar = () => {
+    const [load, setLoad] = useState(false);
+    useEffect(() => {
+        setLoad(true);
+    }, []);
+
+    const skills = [
     { name: "Javascript", percent: "70%" },
     { name: "React JSX", percent: "80%" },
     { name: "PHP", percent: "50%" },
@@ -7,11 +14,6 @@ const skills = [
     { name: "SQL", percent: "90%" },
 
 ];
-const ProgressBar = () => {
-    const [load, setLoad] = useState(false);
-    useEffect(() => {
-        setLoad(true);
-    }, []);
 
     return (
         <>
